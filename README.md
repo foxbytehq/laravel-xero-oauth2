@@ -15,7 +15,7 @@ composer require webfox/laravel-xero-oauth2
 ```
 
 ## Documentation
-Documentation for this package can be found at https://webfox.github.io/laravel-xero-oauth2/
+Documentation for this package can be found at [https://foxbytehq.github.io/laravel-xero-oauth2/](https://foxbytehq.github.io/laravel-xero-oauth2/)
 
 ## License
 
