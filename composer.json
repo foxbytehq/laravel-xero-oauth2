@@ -8,13 +8,13 @@
         "laravel",
         "oauth2"
     ],
-    "homepage": "https://github.com/webfox/laravel-xero-oauth2",
+    "homepage": "https://github.com/foxbytehq/laravel-xero-oauth2",
     "license": "MIT",
     "authors": [
         {
             "name": "Matthew Hailwood",
-            "email": "matthew@webfox.co.nz",
-            "homepage": "https://webfox.co.nz",
+            "email": "matthew@foxbyte.nz",
+            "homepage": "https://foxbyte.nz",
             "role": "Developer"
         },
         {
