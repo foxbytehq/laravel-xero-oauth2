@@ -50,6 +50,7 @@ class XeroController extends Controller
 *resources\views\xero.blade.php*
 
 {% raw %}
+```bladehtml
 @extends('_layouts.main')
 
 @section('content')        
@@ -72,6 +73,7 @@ class XeroController extends Controller
         </a>
     @endif
 @endsection
+```
 {% endraw %}
 *routes/web.php*
 
