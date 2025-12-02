@@ -49,6 +49,7 @@ class XeroController extends Controller
 
 *resources\views\xero.blade.php*
 
+```
 {% raw %}
 @extends('_layouts.main')
 
@@ -73,7 +74,7 @@ Connect to Xero
 @endif
 @endsection
 {% endraw %}
-
+```
 *routes/web.php*
 
 ```php
