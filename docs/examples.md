@@ -49,7 +49,7 @@ class XeroController extends Controller
 
 *resources\views\xero.blade.php*
 
-```
+```bladehtml
 {% raw %}
 @extends('_layouts.main')
 
