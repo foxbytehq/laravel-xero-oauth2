@@ -1,5 +1,4 @@
 ---
-layout: none
 render_with_liquid: false
 ---
 
