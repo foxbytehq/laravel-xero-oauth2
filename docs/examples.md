@@ -68,6 +68,7 @@ class XeroController extends Controller
         </a>
     @endif
     @endsection
+```
 
 *routes/web.php*
 
