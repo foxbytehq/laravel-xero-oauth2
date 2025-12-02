@@ -45,7 +45,7 @@ class XeroController extends Controller
 
 *resources\views\xero.blade.php*
 
-```bladehtml
+```injectablephp
     @extends('_layouts.main')
     
     @section('content')        
