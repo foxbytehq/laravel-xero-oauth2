@@ -1,3 +1,8 @@
+---
+layout: none
+render_with_liquid: false
+---
+
 *app\Http\Controllers\XeroController.php*
 
 ```php
