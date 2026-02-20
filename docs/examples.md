@@ -1,3 +1,7 @@
+---
+render_with_liquid: false
+---
+
 *app\Http\Controllers\XeroController.php*
 
 ```php
@@ -45,10 +49,11 @@ class XeroController extends Controller
 
 *resources\views\xero.blade.php*
 
-```
-    @extends('_layouts.main')
-    
-    @section('content')        
+{% raw %}
+```blade
+@extends('_layouts.main')
+
+@section('content')        
     @if($error)
         <h1>Your connection to Xero failed</h1>
         <p>{{ $error }}</p>
@@ -67,9 +72,9 @@ class XeroController extends Controller
             Connect to Xero
         </a>
     @endif
-    @endsection
+@endsection
 ```
-
+{% endraw %}
 *routes/web.php*
 
 ```php
