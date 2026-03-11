@@ -15,7 +15,7 @@ class ArrayStore extends BaseCredentialManager implements OauthCredentialManager
         return $this->dataStorage !== null;
     }
 
-    public function store(AccessTokenInterface $token, array $tenants = null): void
+    public function store(AccessTokenInterface $token, ?array $tenants = null): void
     {
         $this->dataStorage = [
             'token' => $token->getToken(),
@@ -29,7 +29,7 @@ class ArrayStore extends BaseCredentialManager implements OauthCredentialManager
     /**
      * @throws XeroCredentialsNotFound
      */
-    protected function data(string $key = null)
+    protected function data(?string $key = null)
     {
         if (! $this->exists()) {
             throw XeroCredentialsNotFound::make();

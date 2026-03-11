@@ -21,9 +21,9 @@ abstract class BaseCredentialManager
 
     abstract public function exists(): bool;
 
-    abstract protected function store(AccessTokenInterface $token, array $tenants = null): void;
+    abstract protected function store(AccessTokenInterface $token, ?array $tenants = null): void;
 
-    abstract protected function data(string $key = null);
+    abstract protected function data(?string $key = null);
 
     public function getAccessToken(): string
     {

@@ -70,7 +70,7 @@ interface OauthCredentialManager
      * @param  AccessTokenInterface  $token
      * @param  array|null  $tenants
      */
-    public function store(AccessTokenInterface $token, array $tenants = null): void;
+    public function store(AccessTokenInterface $token, ?array $tenants = null): void;
 
     /**
      * Get the current authenticated users details according to the id token.

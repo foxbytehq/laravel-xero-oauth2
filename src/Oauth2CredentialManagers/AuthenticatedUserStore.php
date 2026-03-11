@@ -24,7 +24,7 @@ class AuthenticatedUserStore extends ModelStore
      * @throws XeroUserNotAuthenticated
      * @throws XeroCredentialsNotFound
      */
-    public function data(string $key = null)
+    public function data(?string $key = null)
     {
         if (! Auth::guard(Xero::getDefaultAuthGuard())->check()) {
             throw XeroUserNotAuthenticated::make();
