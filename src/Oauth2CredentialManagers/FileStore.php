@@ -31,7 +31,7 @@ class FileStore extends BaseCredentialManager implements OauthCredentialManager
     /**
      * @throws XeroFailedToWriteFile
      */
-    public function store(AccessTokenInterface $token, array $tenants = null): void
+    public function store(AccessTokenInterface $token, ?array $tenants = null): void
     {
         $ret = $this->disk->put($this->filePath, json_encode([
             'token' => $token->getToken(),
@@ -49,7 +49,7 @@ class FileStore extends BaseCredentialManager implements OauthCredentialManager
     /**
      * @throws XeroCredentialsNotFound
      */
-    protected function data(string $key = null)
+    protected function data(?string $key = null)
     {
         if (! $this->exists()) {
             throw XeroCredentialsNotFound::make();

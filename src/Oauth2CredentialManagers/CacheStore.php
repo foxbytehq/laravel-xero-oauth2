@@ -25,7 +25,7 @@ class CacheStore extends BaseCredentialManager implements OauthCredentialManager
         return $this->cache->has($this->cacheKey);
     }
 
-    public function store(AccessTokenInterface $token, array $tenants = null): void
+    public function store(AccessTokenInterface $token, ?array $tenants = null): void
     {
         $this->cache->forever($this->cacheKey, [
             'token' => $token->getToken(),
@@ -39,7 +39,7 @@ class CacheStore extends BaseCredentialManager implements OauthCredentialManager
     /**
      * @throws XeroCredentialsNotFound
      */
-    protected function data(string $key = null)
+    protected function data(?string $key = null)
     {
         if (! $this->exists()) {
             throw XeroCredentialsNotFound::make();

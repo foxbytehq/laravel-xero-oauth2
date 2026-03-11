@@ -26,7 +26,7 @@ class ModelStore extends BaseCredentialManager implements OauthCredentialManager
         return isset($this->model) && $this->model->exists && is_array($this->model->{$this->getModelKey()});
     }
 
-    public function store(AccessTokenInterface $token, array $tenants = null): void
+    public function store(AccessTokenInterface $token, ?array $tenants = null): void
     {
         $this->model->update([
             $this->getModelKey() => [
@@ -39,7 +39,7 @@ class ModelStore extends BaseCredentialManager implements OauthCredentialManager
         ]);
     }
 
-    protected function data(string $key = null)
+    protected function data(?string $key = null)
     {
         if (! $this->exists()) {
             throw XeroCredentialsNotFound::make();
