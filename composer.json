@@ -26,7 +26,7 @@
     ],
     "require": {
         "php": "^8.2",
-        "xeroapi/xero-php-oauth2": "^11.0|^12.0",
+"xeroapi/xero-php-oauth2": "^11.0 || ^12.0",
         "illuminate/auth": "^12.0|^13.0",
         "illuminate/cache": "^12.0|^13.0",
         "illuminate/database": "^12.0|^13.0",
