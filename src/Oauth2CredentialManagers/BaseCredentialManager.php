@@ -45,11 +45,13 @@ abstract class BaseCredentialManager
      */
     public function getTenantId(int $tenant = 0): string
     {
-        if (! isset($this->data('tenants')[$tenant])) {
+        $tenants = $this->getTenants();
+
+        if (! isset($tenants[$tenant])) {
             throw XeroTenantNotFound::make();
         }
 
-        return $this->data('tenants')[$tenant]['Id'];
+        return $tenants[$tenant]['Id'];
     }
 
     public function getExpires(): int
