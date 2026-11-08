@@ -101,3 +101,35 @@ You will need to implement the following methods:
 3. `data(string $key = null)` - Returns the stored credentials (it is recommended you check the credentials exists, if not throw the `XeroCredentialsNotFound` exception).
 
 Once this has been completed, you should point `xero.credential_store` to your new implementation.
+
+## Refreshing from several processes
+
+The credential manager refreshes the token when it is resolved and the access token has expired. If two processes resolve it at the same moment (two queue workers, or a worker and a web request), both send the same refresh token to Xero. Xero rotates the refresh token on every refresh and accepts the previous one for 30 minutes only ([token types](https://developer.xero.com/documentation/guides/oauth2/token-types)), so the stored credentials end up holding whichever result was written last, and a later refresh with a token rotated out more than 30 minutes earlier is rejected (reported as `invalid_grant`, for example in [#48](https://github.com/foxbytehq/laravel-xero-oauth2/issues/48)).
+
+To refresh one process at a time, extend your store and wrap `refresh()` in a cache lock. Use a cache store that supports atomic locks (Redis, Memcached, DynamoDB or database):
+
+```php
+<?php
+
+namespace App\Xero;
+
+use Illuminate\Support\Facades\Cache;
+use Webfox\Xero\Oauth2CredentialManagers\CacheStore;
+
+class LockedCacheStore extends CacheStore
+{
+    public function refresh(): void
+    {
+        Cache::lock('xero-oauth-refresh', 30)->block(10, function () {
+            // Another process may have refreshed while this one waited for the lock.
+            if (! $this->isExpired()) {
+                return;
+            }
+
+            parent::refresh();
+        });
+    }
+}
+```
+
+Then point `xero.credential_store` to `App\Xero\LockedCacheStore::class`. The same works for `FileStore` and `ModelStore`. If you store credentials per user or per team, include that ID in the lock name.
