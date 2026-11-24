@@ -36,7 +36,7 @@ https://{your-domain}/xero/auth/callback
 
 ### Protecting the Routes
 
-By default, the `xero/auth/authorize` and `xero/auth/callback` routes only use the `web` middleware. With an application-wide credential store such as the default `FileStore`, anyone who can visit these routes can connect their own Xero organisation and replace your stored credentials.
+By default, the `xero/auth/authorize` and `xero/auth/callback` routes only use the `web` middleware. With a credential store shared by the whole app, such as the default `FileStore` or `CacheStore`, anyone who can visit these routes can connect their own Xero organisation and replace your stored credentials.
 
 To restrict who can connect, publish the configuration file and add your authentication middleware to `routes.middleware`:
 

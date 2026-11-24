@@ -19,9 +19,7 @@ return [
 
     /************************************************************************
      * Middleware applied to the authorize and callback routes.
-     * With an application-wide credential store, anyone who can visit these
-     * routes can connect their own Xero organisation and replace the stored
-     * credentials, so add your authentication middleware here.
+     * Add your authentication middleware to restrict who can connect.
      ************************************************************************/
     'routes' => [
         'middleware' => ['web'],
