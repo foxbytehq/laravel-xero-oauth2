@@ -17,6 +17,14 @@ return [
      ************************************************************************/
     'credential_disk' => env('XERO_CREDENTIAL_DISK'),
 
+    /************************************************************************
+     * Middleware applied to the authorize and callback routes.
+     * Add your authentication middleware to restrict who can connect.
+     ************************************************************************/
+    'routes' => [
+        'middleware' => ['web'],
+    ],
+
     'oauth' => [
         /************************************************************************
          * Client ID provided by Xero when registering your application
