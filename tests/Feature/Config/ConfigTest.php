@@ -13,6 +13,9 @@ class ConfigTest extends TestCase
             'api_host' => 'https://api.xero.com/api.xro/2.0',
             'credential_store' => 'Webfox\Xero\Oauth2CredentialManagers\FileStore',
             'credential_disk' => 'local',
+            'routes' => [
+                'middleware' => ['web'],
+            ],
             'oauth' => [
                 'client_id' => 'demo-client-id',
                 'client_secret' => 'demo-client-secret',

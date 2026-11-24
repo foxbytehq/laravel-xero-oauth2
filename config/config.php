@@ -17,6 +17,16 @@ return [
      ************************************************************************/
     'credential_disk' => env('XERO_CREDENTIAL_DISK'),
 
+    /************************************************************************
+     * Middleware applied to the authorize and callback routes.
+     * With an application-wide credential store, anyone who can visit these
+     * routes can connect their own Xero organisation and replace the stored
+     * credentials, so add your authentication middleware here.
+     ************************************************************************/
+    'routes' => [
+        'middleware' => ['web'],
+    ],
+
     'oauth' => [
         /************************************************************************
          * Client ID provided by Xero when registering your application

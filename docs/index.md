@@ -34,6 +34,18 @@ https://{your-domain}/xero/auth/callback
 
 *(The flow is xero/auth/callback performs the oAuth handshake and stores your token, then redirects you over to your success callback)*
 
+### Protecting the Routes
+
+By default, the `xero/auth/authorize` and `xero/auth/callback` routes only use the `web` middleware. With an application-wide credential store such as the default `FileStore`, anyone who can visit these routes can connect their own Xero organisation and replace your stored credentials.
+
+To restrict who can connect, publish the configuration file and add your authentication middleware to `routes.middleware`:
+
+```php
+'routes' => [
+    'middleware' => ['web', 'auth'],
+],
+```
+
 ### Error Handling
 
 In the event that a user denies access on the Xero Authorisation page, the package will throw a `OAuthException` from the [AuthorizationCallbackController](src/Controllers/AuthorizationCallbackController.php). This can be caught and acted upon however you prefer.
